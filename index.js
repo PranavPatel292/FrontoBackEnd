@@ -9,8 +9,6 @@ const fs = require("fs");
 let mappingOfSuburbsAndPostCodes = {};
 
 app.get("/loadAddress", function (req, res) {
-  // TODO: handle client response
-
   // this will indicate that the request has been accepted but not yet completed.
   res.writeHead(202, { "Content-Type": "text/plain" });
   res.write("Data processing started...");
@@ -39,5 +37,3 @@ readPostCodeFile(mappingOfSuburbsAndPostCodes).then((data) => {
   mappingOfSuburbsAndPostCodes = data;
   app.listen(3000, () => console.log("server started"));
 });
-
-// console.log(mappingOfSuburbsAndPostCodes);
