@@ -1,4 +1,4 @@
-# Fronto BackEnd
+# Fonto BackEnd
 
 This is task is based on the requirements provided by Fronto for their take home exercise. The task involves creating a resultant file that has address in comma separated values.
 
