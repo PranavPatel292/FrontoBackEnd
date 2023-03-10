@@ -23,7 +23,7 @@ $ node index.js
 
 ###### 5) Use postman (or even browser will work fine) and go to: http://localhost:3000/loadAddress
 
-###### 6) The server will output the `result.csv` file in the root of folder
+###### 6) The server will output the `result.csv` file in the root folder
 
 ## Technology used
 
