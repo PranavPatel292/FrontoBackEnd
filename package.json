@@ -26,7 +26,10 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@types/filesystem": "^0.0.32",
+    "csv-parser": "^3.0.0",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "search-in-file": "^2.2.2"
   }
 }
