@@ -2,14 +2,28 @@
 
 This is task is based on the requirements provided by Fronto for their take home exercise. The task involves creating a resultant file that has address in comma separated values.
 
-## To run project
+## How to run project
 
-###### 1) first install NodeJS
-###### 2) use any of your favourite package managing tool, NPM or YARN
-###### 3) type - npm install or yarn install
-###### 4) type - node index.js
-###### 5) then use postman or even a browser will work fine, type: http://localhost:3000/loadAddress
-###### 6) this will generate result.csv file;
+###### 1) Make sure you have `NodeJS` and a package manager `(YARN or NPM)`
+###### 2) Use npm or yarn to install all the required packages 
+```sh
+$ npm install
+```
+###### or
+```sh
+$ yarn add
+```
+
+
+###### 3) To run the project
+```sh
+$ node index.js
+```
+###### 4) The server will run on: http://localhost:3000
+
+###### 5) Use postman (or even browser will work fine) and go to: http://localhost:3000/loadAddress
+
+###### 6) The server will output the `result.csv` file in the root of folder
 
 ## Technology used
 
