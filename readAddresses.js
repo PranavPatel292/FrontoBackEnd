@@ -1,4 +1,6 @@
-const makeCleanAddress = (address) => {
+const fs = require("fs");
+
+const makeCleanAddress = (address, hashMap) => {
   const splitAddress = address.split(" ");
   let suburb = "",
     postcode = "",
@@ -32,27 +34,33 @@ const makeCleanAddress = (address) => {
       ];
       return (finalString = array.join(", "));
     } else {
-      return addresses + "not found in the database";
+      return address + "not found in the database";
     }
   }
 };
 
-const handleRawAddresses = (addresses) => {
+const handleRawAddresses = (addresses, hashMap) => {
+  const result = [];
   addresses.forEach((address) => {
     // remove any \" before and after the address;
     const cleanAddress = address.replace(/"/g, "");
-    makeCleanAddress(cleanAddress);
+    result.push(makeCleanAddress(cleanAddress, hashMap));
+  });
+  return result;
+};
+
+const readAddressFile = (hashMap) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(
+      "./backend-data/sample_addresses.csv",
+      "utf-8",
+      function (err, data) {
+        if (err) reject(err);
+        const rawAddress = data.split("\n");
+        resolve(handleRawAddresses(rawAddress, hashMap));
+      }
+    );
   });
 };
 
-export const readAddressFile = () => {
-  fs.readFile(
-    "./backend-data/sample_addresses.csv",
-    "utf-8",
-    function (err, data) {
-      if (err) console.error(err);
-      const rawAddress = data.split("\n");
-      handleRawAddresses(rawAddress);
-    }
-  );
-};
+module.exports = readAddressFile;

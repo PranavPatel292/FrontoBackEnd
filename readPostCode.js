@@ -1,8 +1,9 @@
 const fs = require("fs");
-
+// {2042: [["A", "B"], ["NSW"]]}
+// {"A" : [2042, "NSW"]}
 const hashMap = {};
 
-const helperPinCodeMapping = (data) => {
+const helperPinCodeMapping = async (data) => {
   data.forEach((ele) => {
     const splitPinCodeData = ele.split(",");
 
@@ -27,14 +28,20 @@ const helperPinCodeMapping = (data) => {
   return hashMap;
 };
 
-export const readPostCodeFile = () => {
-  fs.readFile(
-    "./backend-data/australian_post_codes.txt",
-    "utf8",
-    function (err, data) {
-      if (err) console.error(err);
-      const rawPinCode = data.split("\n");
-      return helperPinCodeMapping(rawPinCode);
-    }
-  );
+const readPostCodeFile = () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(
+      "./backend-data/australian_post_codes.txt",
+      "utf8",
+      function (err, data) {
+        if (err) reject(err);
+        else {
+          const rawPinCode = data.split("\n");
+          resolve(helperPinCodeMapping(rawPinCode));
+        }
+      }
+    );
+  });
 };
+
+module.exports = readPostCodeFile;
