@@ -15,16 +15,16 @@ app.get("/loadAddress", function (req, res) {
 
   readAddressFile(mappingOfSuburbsAndPostCodes)
     .then((data) => {
-      fs.writeFile("result.csv", JSON.stringify(data), (err) => {
-        if (err) {
-          console.error(err);
-          res.statusCode = 500;
-          res.end("An error occurred while processing the data");
-        } else {
-          res.statusCode = 200;
-          res.end("Data processed and saved successfully");
-        }
+      const resultFileObj = fs.createWriteStream("./result.csv");
+      data.forEach((element) => {
+        if (element) resultFileObj.write(`${element}\n`);
       });
+      resultFileObj.on("error", (err) => {
+        res.statusCode = 500;
+        res.end(err.message);
+      });
+      res.statusCode = 200;
+      res.end("Data processed and saved successfully");
     })
     .catch((err) => {
       console.error(err);

@@ -43,8 +43,10 @@ const handleRawAddresses = (addresses, hashMap) => {
   const result = [];
   addresses.forEach((address) => {
     // remove any \" before and after the address;
-    const cleanAddress = address.replace(/"/g, "");
-    result.push(makeCleanAddress(cleanAddress, hashMap));
+    if (address.length > 0) {
+      const cleanAddress = address.replace(/"/g, "");
+      result.push(makeCleanAddress(cleanAddress, hashMap));
+    }
   });
   return result;
 };
