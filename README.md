@@ -4,7 +4,7 @@ This is task is based on the requirements provided by Fronto for their take home
 
 ## How to run project
 
-###### 1) Make sure you have `NodeJS` and a package manager `(YARN or NPM)`
+###### 1) Make sure you have the `NodeJS` and a package manager `(YARN or NPM)`
 ###### 2) Use npm or yarn to install all the required packages 
 ```sh
 $ npm install
