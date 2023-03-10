@@ -35,5 +35,5 @@ app.get("/loadAddress", function (req, res) {
 
 readPostCodeFile(mappingOfSuburbsAndPostCodes).then((data) => {
   mappingOfSuburbsAndPostCodes = data;
-  app.listen(3000, () => console.log("server started"));
+  app.listen(3000, () => console.log("server started on port: 3000"));
 });
